@@ -13,6 +13,7 @@ public class Game extends Canvas implements Runnable {
     public  static final int SIZE = 20;
     public  static final int WIDTH = COLS*SIZE;
     public  static final int HEIGHT = ROWS*SIZE;
+    public  static Apple apple;
 
 
 
@@ -30,11 +31,13 @@ public class Game extends Canvas implements Runnable {
 
     public Game(){
         snake=new Snake();
+        apple = new Apple();
     }
 
     public void render(Graphics g){
         g.clearRect(0,0,WIDTH,HEIGHT);
         snake.drawSnake(g);
+        apple.drawApple(g);
 
     }
 

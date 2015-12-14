@@ -53,7 +53,19 @@ public class Snake {
     public  void tick(){
 
         head = body.peekLast();
+        boolean t =
+                head.x >= Game.COLS || head.x < 0 ||
+                        head.y >= Game.ROWS || head.y < 0;
         Box nextPos = new Box(head.x +vel1 ,head.y+vel2);
+
+        if(nextPos.equals(Game.apple.getAppleBox())){
+          body.add(Game.apple.getAppleBox());
+           Game.apple = new Apple();
+
+        }else if(body.contains(nextPos)|| t ){
+            Game.gameRunning = false;
+        }
+
         for (int i = 0; i <body.size()-1 ; i++) {
             body.set(i, body.get(i + 1));
         }
